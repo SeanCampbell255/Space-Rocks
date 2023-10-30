@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1698345797
+::res://::1698675889
 icon.svg::CompressedTexture2D::4465083243668716644::1698344756::1698344761::1::::<><>::
 ::res://assets/::1698345487
 attributions.txt::TextFile::-1::1698345485::0::1::::<><>::
@@ -27,5 +27,7 @@ explosion.wav::AudioStreamWAV::3464756272456472044::1698345486::1698345487::1:::
 Funky-Gameplay_Looping.ogg::AudioStreamOggVorbis::4634063797567338863::1698345486::1698345486::1::::<><>::
 laser.ogg::AudioStreamOggVorbis::2246150080053813168::1698345486::1698345486::1::::<><>::
 levelup.ogg::AudioStreamOggVorbis::2869398460545769657::1698345486::1698345486::1::::<><>::
-::res://scenes/::1698345797
-player.tscn::PackedScene::3989660444285264143::1698345786::0::1::::<><>::uid://b6cploglkqrhc::::res://assets/player_ship.png
+::res://scenes/::1698611654
+player.tscn::PackedScene::3989660444285264143::1698611654::0::1::::<><>::res://scripts/player.gd<>uid://b6cploglkqrhc::::res://assets/player_ship.png
+::res://scripts/::1698616720
+player.gd::GDScript::-1::1698616720::0::1::::<>RigidBody2D<>::

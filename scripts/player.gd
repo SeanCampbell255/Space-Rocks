@@ -6,8 +6,15 @@ enum {INIT, ALIVE, INVULNERABLE, DEAD}
 @export var spin_power = 8000
 
 var rotation_dir = 0
+var screensize = Vector2.ZERO
 var state = INIT
 var thrust = Vector2.ZERO
+
+func _integrate_forces(physics_state):
+	var xform = physics_state.transform
+	xform.origin.x = wrapf(xform.origin.x, 0, screensize.x)
+	xform.origin.y = wrapf(xform.origin.y, 0, screensize.y)
+	physics_state.tranform = xform
 
 func _physics_process(_delta):
 	constant_force = thrust
@@ -18,6 +25,7 @@ func _process(_delta):
 
 func _ready():
 	change_state(ALIVE)
+	screensize = get_viewport_rect().size
 
 func change_state(new_state):
 	match new_state:
