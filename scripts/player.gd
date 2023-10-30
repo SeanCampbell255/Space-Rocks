@@ -12,11 +12,12 @@ var rotation_dir = 0
 var screensize = Vector2.ZERO
 var state = INIT
 var thrust = Vector2.ZERO
+var wrap_offset
 
 func _integrate_forces(physics_state):
 	var xform = physics_state.transform
-	xform.origin.x = wrapf(xform.origin.x, 0, screensize.x)
-	xform.origin.y = wrapf(xform.origin.y, 0, screensize.y)
+	xform.origin.x = wrapf(xform.origin.x, 0 - wrap_offset, screensize.x + wrap_offset)
+	xform.origin.y = wrapf(xform.origin.y, 0 - wrap_offset, screensize.y + wrap_offset)
 	physics_state.transform = xform
 
 func _physics_process(_delta):
@@ -30,6 +31,7 @@ func _ready():
 	change_state(ALIVE)
 	screensize = get_viewport_rect().size
 	$GunCooldown.wait_time = fire_rate
+	wrap_offset = int($Sprite2D.texture.get_size().x / 2 * $Sprite2D.scale.x)
 
 func change_state(new_state):
 	match new_state:
