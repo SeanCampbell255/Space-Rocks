@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1698681391
+::res://::1698681538
 icon.svg::CompressedTexture2D::4465083243668716644::1698344756::1698344761::1::::<><>::
 ::res://assets/::1698345487
 attributions.txt::TextFile::-1::1698345485::0::1::::<><>::
@@ -27,10 +27,12 @@ explosion.wav::AudioStreamWAV::3464756272456472044::1698345486::1698345487::1:::
 Funky-Gameplay_Looping.ogg::AudioStreamOggVorbis::4634063797567338863::1698345486::1698345486::1::::<><>::
 laser.ogg::AudioStreamOggVorbis::2246150080053813168::1698345486::1698345486::1::::<><>::
 levelup.ogg::AudioStreamOggVorbis::2869398460545769657::1698345486::1698345486::1::::<><>::
-::res://scenes/::1698681511
+::res://scenes/::1698683308
+bullet.tscn::PackedScene::1849228987983474907::1698683284::0::1::::<><>::res://scripts/bullet.gd<>uid://cxg15mfin4jdi::::res://assets/laser.png
+main.tscn::PackedScene::8445164581129755735::1698683571::0::1::::<><>::uid://b2ifm15mc2bvg::::res://assets/space_background.png<>uid://bw3veicdd888r::::res://scenes/player.tscn
+player.tscn::PackedScene::3989660444285264143::1698683308::0::1::::<><>::res://scripts/player.gd<>uid://b6cploglkqrhc::::res://assets/player_ship.png<>uid://1l1sceq8ty0b::::res://scenes/bullet.tscn
+rock.gd::GDScript::-1::1698682926::0::1::::<>RigidBody2D<>::
+rock.tscn::PackedScene::8345312139378455038::1698683743::0::1::::<><>::uid://dxocg4v7lujn5::::res://assets/rock.png<>res://scenes/rock.gd
+::res://scripts/::1698683282
 bullet.gd::GDScript::-1::1698679018::0::1::::<>Area2D<>::
-bullet.tscn::PackedScene::1849228987983474907::1698681538::0::1::::<><>::res://scenes/bullet.gd<>uid://cxg15mfin4jdi::::res://assets/laser.png
-main.tscn::PackedScene::8445164581129755735::1698681511::0::1::::<><>::uid://b2ifm15mc2bvg::::res://assets/space_background.png
-player.tscn::PackedScene::3989660444285264143::1698681511::0::1::::<><>::res://scripts/player.gd<>uid://b6cploglkqrhc::::res://assets/player_ship.png<>uid://1l1sceq8ty0b::::res://scenes/bullet.tscn
-::res://scripts/::1698681030
-player.gd::GDScript::-1::1698681030::0::1::::<>RigidBody2D<>::
+player.gd::GDScript::-1::1698683282::0::1::::<>RigidBody2D<>::
