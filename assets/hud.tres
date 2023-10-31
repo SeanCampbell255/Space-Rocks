@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://fh3gmrpyoqi0"]
+
+[ext_resource type="FontFile" uid="uid://bomyav7p7fwsm" path="res://assets/kenvector_future_thin.ttf" id="1_rf2oh"]
+
+[resource]
+font = ExtResource("1_rf2oh")
+font_size = 64

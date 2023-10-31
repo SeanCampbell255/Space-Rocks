@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfvcttyy8y4rx"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_7qljn"]
+[ext_resource type="Texture2D" uid="uid://dnn7cehb81v6" path="res://assets/player_small.png" id="2_fwcxi"]
+[ext_resource type="LabelSettings" uid="uid://fh3gmrpyoqi0" path="res://assets/hud.tres" id="2_llay4"]
+[ext_resource type="Texture2D" uid="uid://c5a5lfygyqva4" path="res://assets/play_button.png" id="3_ekox4"]
+[ext_resource type="Texture2D" uid="uid://b0c8xckckli4v" path="res://assets/play_button_h.png" id="4_5qxsr"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7qljn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = ExtResource("2_llay4")
+
+[node name="LivesCounter" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="L1" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("2_fwcxi")
+stretch_mode = 5
+
+[node name="L2" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("2_fwcxi")
+stretch_mode = 5
+
+[node name="L3" type="TextureRect" parent="MarginContainer/HBoxContainer/LivesCounter"]
+layout_mode = 2
+texture = ExtResource("2_fwcxi")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Message" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Space Rocks!"
+label_settings = ExtResource("2_llay4")
+horizontal_alignment = 1
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_ekox4")
+texture_hover = ExtResource("4_5qxsr")
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
