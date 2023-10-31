@@ -8,3 +8,4 @@ res://scenes/main.gd
 res://scenes/hud.tscn
 res://scripts/hud.gd
 res://scripts/main.gd
+res://scripts/player.gd
