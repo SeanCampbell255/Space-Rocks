@@ -4,3 +4,4 @@ res://scenes/bullet.tscn
 res://scenes/main.tscn
 res://scripts/rock.gd
 res://scenes/explosion.tscn
+res://scenes/main.gd
