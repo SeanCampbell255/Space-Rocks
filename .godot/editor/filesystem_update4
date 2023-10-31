@@ -1,8 +1,6 @@
-res://scenes/player.tscn
-res://scripts/player.gd
-res://scenes/bullet.tscn
-res://scenes/bullet.gd
-res://scenes/main.tscn
 res://scenes/rock.tscn
-res://scenes/rock.gd
-res://scenes/main.gd
+res://scenes/player.tscn
+res://scenes/bullet.tscn
+res://scenes/main.tscn
+res://scripts/rock.gd
+res://scenes/explosion.tscn
