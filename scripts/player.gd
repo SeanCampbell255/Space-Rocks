@@ -46,13 +46,26 @@ func change_state(new_state):
 	match new_state:
 		INIT:
 			$CollisionShape2D.set_deferred("disabled", true)
+			$Sprite2D.modulate.a = 0.5
 		ALIVE:
 			$CollisionShape2D.set_deferred("disabled", false)
+			$Sprite2D.modulate.a = 1.0
 		INVULNERABLE:
 			$CollisionShape2D.set_deferred("disabled", true)
+			$Sprite2D.modulate.a = 0.5
+			$InvulnerabilityTimer.start()
 		DEAD:
 			$CollisionShape2D.set_deferred("disabled", true)
+			$Sprite2D.hide()
+			linear_velocity = Vector2.ZERO
+			dead.emit()
 	state = new_state
+
+func explode():
+	$Explosion.show()
+	$Explosion/AnimationPlayer.play("explosion")
+	await $Explosion/AnimationPlayer.animation_finished
+	$Explosion.hide()
 
 ## Input handling & part of player movement
 func get_input():
@@ -93,3 +106,14 @@ func shoot():
 
 func _on_gun_cooldown_timeout():
 	can_shoot = true
+
+
+func _on_invulnerability_timer_timeout():
+	change_state(ALIVE)
+
+
+func _on_body_entered(body):
+	if body.is_in_group("rocks"):
+		body.explode()
+		lives -= 1
+		explode()

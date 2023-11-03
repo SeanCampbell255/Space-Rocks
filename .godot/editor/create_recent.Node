@@ -1,9 +1,9 @@
+Timer
 TextureButton
 Label
 VBoxContainer
 TextureRect
 HBoxContainer
-Timer
 MarginContainer
 CanvasLayer
 AnimationPlayer
