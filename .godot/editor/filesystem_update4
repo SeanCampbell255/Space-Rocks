@@ -12,3 +12,4 @@ res://scripts/enemy.gd
 res://scripts/enemy_bullet.gd
 res://scenes/enemy_bullet.tscn
 res://scripts/bullet.gd
+res://scripts/hud.gd
