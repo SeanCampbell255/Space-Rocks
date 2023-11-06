@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciwwdo33qag8"]
+[gd_scene load_steps=15 format=3 uid="uid://ciwwdo33qag8"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nixp8"]
 [ext_resource type="Texture2D" uid="uid://bm0kd4ujq28ka" path="res://assets/enemy_saucer.png" id="1_qg7bp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cv5aabd7e081y" path="res://scenes/explosion.tscn" id="4_31r32"]
 [ext_resource type="AudioStream" uid="uid://bpmmbahnyr4ia" path="res://assets/sounds/explosion.wav" id="6_xrd3h"]
 [ext_resource type="AudioStream" uid="uid://snxlhf3fr2qy" path="res://assets/sounds/enemy_laser.wav" id="7_aui1d"]
+[ext_resource type="Texture2D" uid="uid://des854pchnn5i" path="res://assets/corona.png" id="8_kqw2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ncei"]
 radius = 35.0
@@ -50,6 +51,13 @@ _data = {
 "flash": SubResource("Animation_vpse5")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xgdip"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_5eqlv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.983517, 0.157895), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 position = Vector2(560, 312)
 script = ExtResource("1_nixp8")
@@ -84,6 +92,18 @@ volume_db = -20.0
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_aui1d")
 volume_db = -20.0
+
+[node name="SparklingTrail" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_xgdip")
+amount = 20
+texture = ExtResource("8_kqw2k")
+emission_shape = 1
+emission_sphere_radius = 25.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_5eqlv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
