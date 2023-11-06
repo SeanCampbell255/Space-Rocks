@@ -1,13 +1,31 @@
-[gd_scene load_steps=10 format=3 uid="uid://ciwwdo33qag8"]
+[gd_scene load_steps=12 format=3 uid="uid://ciwwdo33qag8"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nixp8"]
 [ext_resource type="Texture2D" uid="uid://bm0kd4ujq28ka" path="res://assets/enemy_saucer.png" id="1_qg7bp"]
 [ext_resource type="PackedScene" uid="uid://bsneqf4iiwp5n" path="res://scenes/enemy_bullet.tscn" id="2_bieko"]
 [ext_resource type="PackedScene" uid="uid://cw2ekqsguarpt" path="res://scenes/enemy_paths.tscn" id="2_kq5ev"]
 [ext_resource type="PackedScene" uid="uid://cv5aabd7e081y" path="res://scenes/explosion.tscn" id="4_31r32"]
+[ext_resource type="AudioStream" uid="uid://bpmmbahnyr4ia" path="res://assets/sounds/explosion.wav" id="6_xrd3h"]
+[ext_resource type="AudioStream" uid="uid://snxlhf3fr2qy" path="res://assets/sounds/enemy_laser.wav" id="7_aui1d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ncei"]
 radius = 35.0
+
+[sub_resource type="Animation" id="Animation_wf2qc"]
+length = 0.24
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_vpse5"]
 resource_name = "flash"
@@ -24,22 +42,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.952941, 0, 0, 1), Color(1, 1, 1, 1), Color(0.952941, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_wf2qc"]
-length = 0.24
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eeuje"]
@@ -74,6 +76,14 @@ position = Vector2(0, 0)
 [node name="GunCooldown" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xrd3h")
+volume_db = -20.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aui1d")
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
